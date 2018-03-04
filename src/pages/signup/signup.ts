@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the SignupPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -15,11 +10,27 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class SignupPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  signupForm: FormGroup;
+
+  constructor(
+    public formBuilder: FormBuilder,
+    public navCtrl: NavController,
+    public navParams: NavParams
+  ) {
+
+    let emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+
+    this.signupForm = this.formBuilder.group({
+      name: ['', [Validators.required, Validators.minLength(3)]],
+      username: ['', [Validators.required, Validators.minLength(3)]],
+      email: ['', Validators.compose([Validators.required, Validators.pattern(emailRegex)])],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+    })
+
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SignupPage');
+  onSubmit(): void {
+    console.log("form submit");
   }
 
 }

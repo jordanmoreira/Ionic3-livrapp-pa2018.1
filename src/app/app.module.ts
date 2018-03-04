@@ -11,7 +11,7 @@ import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { MyApp } from './app.component';
-import { SignupPage } from '../pages/signup/signup';
+import { SignupPage } from './../pages/signup/signup';
 import { TabsPage } from '../pages/tabs/tabs';
 
 const firebaseAppConfig: FirebaseAppConfig = {

@@ -5,6 +5,7 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { AngularFireDatabase, AngularFireDatabaseModule } from "angularfire2/database";
 import { AngularFireModule, FirebaseAppConfig } from 'angularfire2';
 
 import { AboutPage } from '../pages/about/about';
@@ -13,6 +14,10 @@ import { HomePage } from '../pages/home/home';
 import { MyApp } from './app.component';
 import { SignupPage } from './../pages/signup/signup';
 import { TabsPage } from '../pages/tabs/tabs';
+
+import { UserService } from '../providers/user/user.service';
+
+
 
 const firebaseAppConfig: FirebaseAppConfig = {
   apiKey: "AIzaSyDFA-RjwPzELId63w9ry4o2Y7p11tq_E7Y",
@@ -35,6 +40,7 @@ const firebaseAppConfig: FirebaseAppConfig = {
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    AngularFireDatabaseModule,
     AngularFireModule.initializeApp(firebaseAppConfig)
   ],
   bootstrap: [IonicApp],
@@ -49,7 +55,8 @@ const firebaseAppConfig: FirebaseAppConfig = {
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
+    UserService,
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
   ]
 })
 export class AppModule { }

@@ -1,3 +1,5 @@
+import { HttpModule } from '@angular/http';
+
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
@@ -5,8 +7,9 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { AngularFireDatabase, AngularFireDatabaseModule } from "angularfire2/database";
 import { AngularFireModule, FirebaseAppConfig } from 'angularfire2';
+import { AngularFireDatabase, AngularFireDatabaseModule } from "angularfire2/database";
+//import { FIREBASE_CONFIG} from './firebase.credentials';
 
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
@@ -16,6 +19,7 @@ import { SignupPage } from './../pages/signup/signup';
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { UserService } from '../providers/user/user.service';
+import { AuthService } from '../providers/auth/auth.service';
 
 
 
@@ -41,6 +45,7 @@ const firebaseAppConfig: FirebaseAppConfig = {
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireDatabaseModule,
+    HttpModule,
     AngularFireModule.initializeApp(firebaseAppConfig)
   ],
   bootstrap: [IonicApp],
@@ -53,10 +58,11 @@ const firebaseAppConfig: FirebaseAppConfig = {
     TabsPage
   ],
   providers: [
+    AuthService,
     StatusBar,
     SplashScreen,
     UserService,
-    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
 export class AppModule { }

@@ -3,6 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { UserService } from '../../providers/user/user.service';
+import { AuthService } from '../../providers/auth/auth.service';
+
+import * as firebase from 'firebase/app';
 
 
 @IonicPage()
@@ -15,6 +18,7 @@ export class SignupPage {
   signupForm: FormGroup;
 
   constructor(
+    public authService: AuthService,
     public formBuilder: FormBuilder,
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -33,10 +37,18 @@ export class SignupPage {
   }
 
   onSubmit(): void {
-    this.userService.create(this.signupForm.value)
+    
+    let user = this.signupForm.value;
+    
+    this.authService.createAuthUser({
+      email: user.email,
+      password: user.password
+    }).then((authUser: firebase.User) => {
+      this.userService.create(user)
       .then(() => {
         console.log("Usuario cadastrado com sucesso!");
       });
+    });
   }
 
 }

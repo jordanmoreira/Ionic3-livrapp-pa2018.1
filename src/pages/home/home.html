@@ -6,6 +6,13 @@
 
 <ion-content padding>
 
+  <ion-list no-lines>
+    <button ion-item *ngFor="let user of users | async" (click)="onChatCreate(user)">
+      {{ user.name }}
+    </button>
+  </ion-list>
+
+
   <button ion-button block (click)="onSignup()">Cadastre-se</button>
 
 </ion-content>

@@ -1,5 +1,6 @@
 import { HttpModule } from '@angular/http';
 import { Injectable } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
@@ -9,6 +10,7 @@ export class AuthService {
 
   constructor(
     public http: HttpModule,
+    public httpClientModule: HttpClientModule,
     public afAuth: AngularFireAuth
   ) {
     console.log('Hello AuthProvider Provider');

@@ -1,4 +1,5 @@
 import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -9,6 +10,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { AngularFireModule, FirebaseAppConfig } from 'angularfire2';
 import { AngularFireDatabase, AngularFireDatabaseModule } from "angularfire2/database";
+import { AngularFireAuthModule } from 'angularfire2/auth';
 //import { FIREBASE_CONFIG} from './firebase.credentials';
 
 import { AboutPage } from '../pages/about/about';
@@ -45,7 +47,9 @@ const firebaseAppConfig: FirebaseAppConfig = {
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireDatabaseModule,
+    AngularFireAuthModule,
     HttpModule,
+    HttpClientModule,
     AngularFireModule.initializeApp(firebaseAppConfig)
   ],
   bootstrap: [IonicApp],
@@ -60,6 +64,7 @@ const firebaseAppConfig: FirebaseAppConfig = {
   providers: [
     AuthService,
     StatusBar,
+    AngularFireAuthModule,
     SplashScreen,
     UserService,
     { provide: ErrorHandler, useClass: IonicErrorHandler }

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs';
 
+import { AngularFireAuth } from "angularfire2/auth";
 import { AngularFireDatabase, AngularFireList } from "angularfire2/database";
 
 import { User } from '../../models/user.model';

@@ -37,17 +37,17 @@ export class SignupPage {
   }
 
   onSubmit(): void {
-    
+
     let user = this.signupForm.value;
-    
+
     this.authService.createAuthUser({
       email: user.email,
       password: user.password
     }).then((authUser: firebase.User) => {
       this.userService.create(user)
-      .then(() => {
-        console.log("Usuario cadastrado com sucesso!");
-      });
+        .then(() => {
+          console.log("Usuario cadastrado com sucesso!");
+        });
     });
   }
 

@@ -11,18 +11,17 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { AngularFireModule, FirebaseAppConfig } from 'angularfire2';
 import { AngularFireDatabase, AngularFireDatabaseModule } from "angularfire2/database";
 import { AngularFireAuthModule } from 'angularfire2/auth';
-//import { FIREBASE_CONFIG} from './firebase.credentials';
 
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
 import { MyApp } from './app.component';
-import { SignupPage } from './../pages/signup/signup';
 import { TabsPage } from '../pages/tabs/tabs';
 
-import { UserService } from '../providers/user/user.service';
+import { HomePage } from '../pages/home/home';
 import { AuthService } from '../providers/auth/auth.service';
-
+import { SigninPage } from '../pages/signin/signin';
+import { SignupPage } from './../pages/signup/signup';
+import { UserService } from '../providers/user/user.service';
 
 
 const firebaseAppConfig: FirebaseAppConfig = {
@@ -40,6 +39,7 @@ const firebaseAppConfig: FirebaseAppConfig = {
     AboutPage,
     ContactPage,
     HomePage,
+    SigninPage,
     SignupPage,
     TabsPage
   ],
@@ -58,6 +58,7 @@ const firebaseAppConfig: FirebaseAppConfig = {
     AboutPage,
     ContactPage,
     HomePage,
+    SigninPage,
     SignupPage,
     TabsPage
   ],

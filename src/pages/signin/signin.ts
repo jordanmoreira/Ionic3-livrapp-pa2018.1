@@ -20,7 +20,7 @@ export class SigninPage {
   constructor(
     public alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
-    public AuthService: AuthService,
+    public authService: AuthService,
     public formBuilder: FormBuilder,
     public navCtrl: NavController,
     public navParams: NavParams
@@ -36,7 +36,7 @@ export class SigninPage {
   onSubmit(): void {
     let loading: Loading = this.showLoading();
 
-    this.AuthService.signinWithEmail(this.signinForm.value)
+    this.authService.signinWithEmail(this.signinForm.value)
       .then((isLogged: boolean) => {
         
         if(isLogged) {
@@ -70,4 +70,18 @@ export class SigninPage {
       buttons: ['Ok']
     }).present();
   }
+
+  onHomePage(): void  {
+    this.navCtrl.push(HomePage)
+      .then((hasAccess: boolean) => {
+        console.log('Autorizado: ', hasAccess);
+      }).catch;(error => {
+        console.log('Não autorizado; ', error);
+      });
+  }
+
+  onLogout(): void {
+    this.authService.logout();
+  }
+
 }

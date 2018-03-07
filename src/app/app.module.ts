@@ -23,6 +23,9 @@ import { SigninPage } from '../pages/signin/signin';
 import { SignupPage } from './../pages/signup/signup';
 import { UserService } from '../providers/user/user.service';
 
+import { CapitalizePipe } from '../pipes/capitalize.pipe';
+import { CustomLoggedHeaderComponent } from '../components/custom-logged-header/custom-logged-header.component';
+
 
 const firebaseAppConfig: FirebaseAppConfig = {
   apiKey: "AIzaSyDFA-RjwPzELId63w9ry4o2Y7p11tq_E7Y",
@@ -35,6 +38,8 @@ const firebaseAppConfig: FirebaseAppConfig = {
 
 @NgModule({
   declarations: [
+    CapitalizePipe,
+    CustomLoggedHeaderComponent,
     MyApp,
     AboutPage,
     ContactPage,

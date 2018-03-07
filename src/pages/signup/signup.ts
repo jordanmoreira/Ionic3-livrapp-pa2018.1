@@ -8,6 +8,7 @@ import { UserService } from '../../providers/user/user.service';
 import { AuthService } from '../../providers/auth/auth.service';
 
 import * as firebase from 'firebase/app';
+import { HomePage } from '../home/home';
 
 
 @IonicPage()
@@ -63,6 +64,7 @@ export class SignupPage {
             this.userService.create(formUser, uuid)
               .then(() => {
                 console.log("Usuario cadastrado com sucesso!");
+                this.navCtrl.setRoot(HomePage);
                 loading.dismiss();
               }).catch((error: any) => {
                 console.log(error);
@@ -97,4 +99,5 @@ export class SignupPage {
       buttons: ['Ok']
     }).present();
   }
+
 }

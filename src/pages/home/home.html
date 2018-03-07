@@ -1,18 +1,34 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>LivrApp</ion-title>
-  </ion-navbar>
+  
+  <custom-logged-header [title]="view | capitalize:true"></custom-logged-header>
+
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="view">
+      <ion-segment-button value="chats">
+        Chats
+      </ion-segment-button>
+      <ion-segment-button value="users">
+        Usuários
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
 </ion-header>
 
 <ion-content padding>
 
-  <ion-list no-lines>
-    <button ion-item *ngFor="let user of users | async" (click)="onChatCreate(user)">
-      {{ user.name }}
-    </button>
-  </ion-list>
+  <div [ngSwitch]="view">
 
+    <ion-list *ngSwitchCase="'chats'" no-lines>
+      <ion-item>chats</ion-item>
+    </ion-list>
 
-  <button ion-button block (click)="onSignup()">Cadastre-se</button>
+    <ion-list *ngSwitchCase="'users'" no-lines>
+      <button ion-item *ngFor="let user of users | async" (click)="onChatCreate(user)">
+        {{ user.name }}
+      </button>
+    </ion-list>
+
+  </div>
 
 </ion-content>

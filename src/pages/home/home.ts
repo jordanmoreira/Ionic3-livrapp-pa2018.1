@@ -3,10 +3,12 @@ import { NavController } from 'ionic-angular';
 
 import { Observable } from 'rxjs';
 
-import { SignupPage } from './../signup/signup';
 import { User } from '../../models/user.model';
 import { UserService } from '../../providers/user/user.service';
 import { AuthService } from '../../providers/auth/auth.service';
+
+import { ChatPage } from '../chat/chat';
+import { SignupPage } from './../signup/signup';
 
 @Component({
   selector: 'page-home',
@@ -31,6 +33,12 @@ export class HomePage {
 
   ionViewDidLoad() {
     this.users = this.userService.users;
+  }
+
+  onChatCreate(recipientUser: User): void {
+    this.navCtrl.push(ChatPage, {
+      recipientUser: recipientUser
+    });
   }
 
   onSignup(): void {

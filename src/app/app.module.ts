@@ -11,6 +11,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { AngularFireModule, FirebaseAppConfig } from 'angularfire2';
 import { AngularFireDatabase, AngularFireDatabaseModule } from "angularfire2/database";
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { CustomLoggedHeaderComponent } from '../components/custom-logged-header/custom-logged-header.component';
 
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
@@ -24,7 +25,7 @@ import { SignupPage } from './../pages/signup/signup';
 import { UserService } from '../providers/user/user.service';
 
 import { CapitalizePipe } from '../pipes/capitalize.pipe';
-import { CustomLoggedHeaderComponent } from '../components/custom-logged-header/custom-logged-header.component';
+import { ChatPage } from '../pages/chat/chat';
 
 
 const firebaseAppConfig: FirebaseAppConfig = {
@@ -39,6 +40,7 @@ const firebaseAppConfig: FirebaseAppConfig = {
 @NgModule({
   declarations: [
     CapitalizePipe,
+    ChatPage,
     CustomLoggedHeaderComponent,
     MyApp,
     AboutPage,
@@ -62,6 +64,7 @@ const firebaseAppConfig: FirebaseAppConfig = {
     MyApp,
     AboutPage,
     ContactPage,
+    ChatPage,
     HomePage,
     SigninPage,
     SignupPage,

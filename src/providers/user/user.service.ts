@@ -4,7 +4,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { AngularFireAuth } from "angularfire2/auth";
-import { AngularFireDatabase, AngularFireList } from "angularfire2/database";
+import { AngularFireDatabase, AngularFireList, AngularFireObject } from "angularfire2/database";
+import { FirebaseApp } from 'angularfire2';
 
 import { User } from '../../models/user.model';
 import { BaseService } from '../base.service';
@@ -15,14 +16,41 @@ import * as firebase from 'firebase/app';
 export class UserService extends BaseService {
 
   users: Observable<User[]>;
+  currentUser: AngularFireObject<User>;
 
   constructor(
+    public afAuth: AngularFireAuth,
     public db: AngularFireDatabase,
+    public firebaseApp: FirebaseApp,
     public http: HttpModule
   ) {
     super();
-    this.users = this.db.list<User>('/users').valueChanges();
+    this.listenAuthState();   
   }
+
+  private setUsers(uidToExclude: string): void {
+    this.users = this.mapListKeys<User>(
+      this.db.list<User>(`/users`, 
+        (ref: firebase.database.Reference) => ref.orderByChild('name')
+      )
+    )
+    .map((users: User[]) => {      
+      return users.filter((user: User) => user.$key !== uidToExclude);
+    });
+  }
+
+  private listenAuthState(): void {
+    this.afAuth
+      .authState
+      .subscribe((authUser: firebase.User) => {
+        if (authUser) {
+          console.log('Auth state alterado!');          
+          this.currentUser = this.db.object(`/users/${authUser.uid}`);
+          this.setUsers(authUser.uid);
+        }
+      });
+  }
+
 
   create(user: User, uuid: string): Promise<void> {
     return this.db.object(`/users/${uuid}`)

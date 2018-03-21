@@ -51,10 +51,15 @@ export class UserService extends BaseService {
       });
   }
 
-
   create(user: User, uuid: string): Promise<void> {
     return this.db.object(`/users/${uuid}`)
       .set(user).catch(this.handlePromiseError);
+  }
+
+  edit(user: {name: string, username: string, photo: string}): Promise<void> {
+    return this.currentUser
+      .update(user);
+      //.catch(this.handlePromiseError);
   }
 
   userExists(username: string): Observable<boolean> {
@@ -65,6 +70,10 @@ export class UserService extends BaseService {
       .map((users: User[]) => {
         return users.length > 0;
       }).catch(this.handleObservableError);
+  }
+
+  get(userId: string): AngularFireObject<User> {
+    return this.db.object<User>(`/users/${userId}`);
   }
 
 }

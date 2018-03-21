@@ -1,19 +1,21 @@
 import { Component, Input } from '@angular/core';
-
 import { AlertController, App, MenuController } from 'ionic-angular';
+
 import { AuthService } from '../../providers/auth/auth.service';
 
-import { BaseComponent } from '../base.component';
 import { User } from '../../models/user.model';
 
-@Component({
-  selector: 'custom-logged-header',
-  templateUrl: 'custom-logged-header.component.html'
-})
-export class CustomLoggedHeaderComponent extends BaseComponent {
+import { UserProfilePage } from '../../pages/user-profile/user-profile';
 
-  @Input() user: User;
-  @Input() title: string;
+import { BaseComponent } from '../base.component';
+
+@Component({
+  selector: 'user-menu',
+  templateUrl: 'user-menu.component.html'
+})
+export class UserMenuComponent extends BaseComponent {
+
+  @Input('user') currentUser: User;
 
   constructor(
     public alertCtrl: AlertController,
@@ -22,9 +24,11 @@ export class CustomLoggedHeaderComponent extends BaseComponent {
     public menuCtrl: MenuController
   ) {
     super(alertCtrl, authService, app, menuCtrl);
-
   }
 
-
+  onProfile(): void {
+    console.log('Perfil');
+    this.navCtrl.push(UserProfilePage);
+  }
 
 }

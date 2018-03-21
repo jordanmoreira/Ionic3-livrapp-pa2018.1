@@ -1,3 +1,4 @@
+import { MyApp } from './app.component';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -11,21 +12,26 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { AngularFireModule, FirebaseAppConfig } from 'angularfire2';
 import { AngularFireDatabase, AngularFireDatabaseModule } from "angularfire2/database";
 import { AngularFireAuthModule } from 'angularfire2/auth';
+
 import { CustomLoggedHeaderComponent } from '../components/custom-logged-header/custom-logged-header.component';
+import { UserInfoComponent } from '../components/user-info/user-info.component';
+import { UserMenuComponent } from '../components/user-menu/user-menu.component';
 
 import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
-import { MyApp } from './app.component';
-import { TabsPage } from '../pages/tabs/tabs';
-
-import { HomePage } from '../pages/home/home';
 import { AuthService } from '../providers/auth/auth.service';
+import { ChatPage } from '../pages/chat/chat';
+import { ContactPage } from '../pages/contact/contact';
+import { HomePage } from '../pages/home/home';
 import { SigninPage } from '../pages/signin/signin';
 import { SignupPage } from './../pages/signup/signup';
-import { UserService } from '../providers/user/user.service';
+import { UserProfilePage } from '../pages/user-profile/user-profile';
+import { TabsPage } from '../pages/tabs/tabs';
 
 import { CapitalizePipe } from '../pipes/capitalize.pipe';
-import { ChatPage } from '../pages/chat/chat';
+
+import { ChatService } from '../providers/chat/chat.service';
+import { MessageService } from '../providers/message/message.service';
+import { UserService } from '../providers/user/user.service';
 
 
 const firebaseAppConfig: FirebaseAppConfig = {
@@ -48,7 +54,10 @@ const firebaseAppConfig: FirebaseAppConfig = {
     HomePage,
     SigninPage,
     SignupPage,
-    TabsPage
+    TabsPage,
+    UserMenuComponent,
+    UserInfoComponent,
+    UserProfilePage
   ],
   imports: [
     BrowserModule,
@@ -68,15 +77,18 @@ const firebaseAppConfig: FirebaseAppConfig = {
     HomePage,
     SigninPage,
     SignupPage,
+    UserProfilePage,
     TabsPage
   ],
   providers: [
     AuthService,
+    ChatService,
+    MessageService,
     StatusBar,
     AngularFireAuthModule,
     SplashScreen,
     UserService,
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
   ]
 })
 export class AppModule { }

@@ -1,5 +1,5 @@
 <ion-header>
-  
+
   <custom-logged-header [title]="view | capitalize:true"></custom-logged-header>
 
   <ion-toolbar>
@@ -20,7 +20,16 @@
   <div [ngSwitch]="view">
 
     <ion-list *ngSwitchCase="'chats'" no-lines>
-      <ion-item>chats</ion-item>
+      <button ion-item *ngFor="let chat of chats | async" (click)="onChatOpen(chat)">
+        <ion-avatar item-start>
+          <img [src]="chat.photo || 'assets/imgs/no-photo.jpg'">
+        </ion-avatar>
+        <h2>{{ chat.title }}</h2>
+        <p *ngIf="chat.lastMessage; else customMessage">{{ chat.timestamp | date:'dd/MM/y H:mm' }} - {{ chat.lastMessage }}</p>
+        <ng-template #customMessage>
+          <p>No messages</p>
+        </ng-template>
+      </button>
     </ion-list>
 
     <ion-list *ngSwitchCase="'users'" no-lines>

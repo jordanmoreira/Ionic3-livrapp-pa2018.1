@@ -37,7 +37,7 @@ export class SignupPage {
       username: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', Validators.compose([Validators.required, Validators.pattern(emailRegex)])],
       password: ['', [Validators.required, Validators.minLength(6)]],
-    })
+    });
 
   }
 

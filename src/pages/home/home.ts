@@ -3,17 +3,20 @@ import { NavController, MenuController } from 'ionic-angular';
 
 import { Observable } from 'rxjs';
 
-import { User } from '../../models/user.model';
+import { Book } from '../../models/book.model';
 import { Chat } from '../../models/chat.model';
+import { User } from '../../models/user.model';
 
-import { UserService } from '../../providers/user/user.service';
 import { AuthService } from '../../providers/auth/auth.service';
+import { BookService } from '../../providers/book/book.service';
 import { ChatService } from '../../providers/chat/chat.service';
+import { UserService } from '../../providers/user/user.service';
 
 import { ChatPage } from '../chat/chat';
 import { SignupPage } from './../signup/signup';
 
 import * as firebase from 'firebase/app';
+import { BookProfilePage } from '../book-profile/book-profile';
 
 @Component({
   selector: 'page-home',
@@ -23,16 +26,17 @@ export class HomePage {
 
   chats: Observable<Chat[]>;
   users: Observable<User[]>;
+  books: Observable<Book[]>;
   view: string = 'chats';
 
   constructor(
     public authService: AuthService,
+    public bookService: BookService,
     public chatService: ChatService,
     public navCtrl: NavController,
     public menuCtrl: MenuController,
     public userService: UserService
   ) {
-
   }
 
   ionViewCanEnter(): Promise<boolean> {
@@ -43,6 +47,7 @@ export class HomePage {
     this.chats = this.chatService.mapListKeys<Chat>(this.chatService.chats)
       .map((chats: Chat[]) => chats.reverse());
     this.users = this.userService.users;
+    this.books = this.bookService.books;
 
     this.menuCtrl.enable(true, 'user-menu');
   }
@@ -97,6 +102,11 @@ export class HomePage {
 
   onSignup(): void {
     this.navCtrl.push(SignupPage)
+  }
+
+  onBookProfile(): void {
+    console.log('Editar livro');
+    this.navCtrl.push(BookProfilePage);
   }
 
 }

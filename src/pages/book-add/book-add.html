@@ -1,0 +1,42 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Novo livro</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <h1 text-center>
+    <ion-icon class="md-bookmarks" name="book-add" color="black"></ion-icon>
+  </h1>
+
+  <form [formGroup]="bookForm" (ngSubmit)="onSubmit(); $event.preventDefault()">
+
+    <ion-item>
+      <ion-icon name="md-bookmark" item-left></ion-icon>
+      <ion-input type="text" placeholder="Título" formControlName="title"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="md-bookmark" item-left></ion-icon>
+      <ion-input type="text" placeholder="Edição" formControlName="edition"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="md-bookmark" item-left></ion-icon>
+      <ion-input type="number" placeholder="Ano de lançamento(1ª edição)" formControlName="year"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="image" item-start></ion-icon>
+      <input type="file" accept="image/*" (change)="onPhoto($event)">
+    </ion-item>
+
+    <br>
+    <button ion-button full type="submit" [disabled]="bookForm.invalid">Adicionar</button>
+  </form>
+
+</ion-content>

@@ -18,7 +18,9 @@ import { UserInfoComponent } from '../components/user-info/user-info.component';
 import { UserMenuComponent } from '../components/user-menu/user-menu.component';
 
 import { AboutPage } from '../pages/about/about';
-import { AuthService } from '../providers/auth/auth.service';
+import { BookAddPage } from '../pages/book-add/book-add';
+import { BookPage } from '../pages/book/book';
+import { BookProfilePage } from '../pages/book-profile/book-profile';
 import { ChatPage } from '../pages/chat/chat';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
@@ -29,6 +31,8 @@ import { TabsPage } from '../pages/tabs/tabs';
 
 import { CapitalizePipe } from '../pipes/capitalize.pipe';
 
+import { AuthService } from '../providers/auth/auth.service';
+import { BookService } from '../providers/book/book.service';
 import { ChatService } from '../providers/chat/chat.service';
 import { MessageService } from '../providers/message/message.service';
 import { UserService } from '../providers/user/user.service';
@@ -50,10 +54,14 @@ const firebaseAppConfig: FirebaseAppConfig = {
     CustomLoggedHeaderComponent,
     MyApp,
     AboutPage,
+    BookAddPage,
+    BookPage,
+    BookProfilePage,
     ContactPage,
     HomePage,
     SigninPage,
     SignupPage,
+    BookAddPage,
     TabsPage,
     UserMenuComponent,
     UserInfoComponent,
@@ -72,6 +80,9 @@ const firebaseAppConfig: FirebaseAppConfig = {
   entryComponents: [
     MyApp,
     AboutPage,
+    BookAddPage,
+    BookPage,
+    BookProfilePage,
     ContactPage,
     ChatPage,
     HomePage,
@@ -82,6 +93,7 @@ const firebaseAppConfig: FirebaseAppConfig = {
   ],
   providers: [
     AuthService,
+    BookService,
     ChatService,
     MessageService,
     StatusBar,

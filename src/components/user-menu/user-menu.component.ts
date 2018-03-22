@@ -5,6 +5,7 @@ import { AuthService } from '../../providers/auth/auth.service';
 
 import { User } from '../../models/user.model';
 
+import { BookAddPage } from '../../pages/book-add/book-add';
 import { UserProfilePage } from '../../pages/user-profile/user-profile';
 
 import { BaseComponent } from '../base.component';
@@ -31,4 +32,8 @@ export class UserMenuComponent extends BaseComponent {
     this.navCtrl.push(UserProfilePage);
   }
 
+  onAddBook(): void {
+    console.log('Livros');
+    this.navCtrl.push(BookAddPage);
+  }
 }

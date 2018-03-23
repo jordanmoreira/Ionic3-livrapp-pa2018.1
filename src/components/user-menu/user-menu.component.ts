@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { AlertController, App, MenuController } from 'ionic-angular';
+import { Component, Input, ViewChild } from '@angular/core';
+import { AlertController, App, MenuController, NavController } from 'ionic-angular';
 
 import { AuthService } from '../../providers/auth/auth.service';
 
@@ -10,13 +10,20 @@ import { UserProfilePage } from '../../pages/user-profile/user-profile';
 
 import { BaseComponent } from '../base.component';
 
+import { Book } from '../../models/book.model';
+
 @Component({
   selector: 'user-menu',
   templateUrl: 'user-menu.component.html'
 })
 export class UserMenuComponent extends BaseComponent {
-
   @Input('user') currentUser: User;
+  
+  book: Book = {
+    title: '',
+    edition: '',
+    year: undefined
+  };
 
   constructor(
     public alertCtrl: AlertController,

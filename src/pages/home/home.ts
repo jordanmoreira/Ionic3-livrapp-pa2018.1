@@ -1,5 +1,6 @@
+import { HttpModule } from '@angular/http';
 import { Component } from '@angular/core';
-import { NavController, MenuController } from 'ionic-angular';
+import { NavController, MenuController, NavParams } from 'ionic-angular';
 
 import { Observable } from 'rxjs';
 
@@ -34,9 +35,22 @@ export class HomePage {
     public bookService: BookService,
     public chatService: ChatService,
     public navCtrl: NavController,
+    public navParams: NavParams,
     public menuCtrl: MenuController,
-    public userService: UserService
+    public userService: UserService,
+    public http:HttpModule
   ) {
+
+    this.books = this.bookService
+      .getBooksList()
+      .snapshotChanges()
+      .map(changes => {
+          return changes.map(c => ({
+            key: c.payload.key, 
+            ...c.payload.val()
+          }));
+        });
+    
   }
 
   ionViewCanEnter(): Promise<boolean> {
@@ -47,7 +61,7 @@ export class HomePage {
     this.chats = this.chatService.mapListKeys<Chat>(this.chatService.chats)
       .map((chats: Chat[]) => chats.reverse());
     this.users = this.userService.users;
-    this.books = this.bookService.books;
+    //this.booksList = this.bookService.books;
 
     this.menuCtrl.enable(true, 'user-menu');
   }

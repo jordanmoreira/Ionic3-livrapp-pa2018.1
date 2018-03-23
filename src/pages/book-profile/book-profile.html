@@ -1,12 +1,37 @@
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>book-profile</ion-title>
+  <!-- <header [title]="'Perfil do livro'"></header> -->
+  <ion-navbar color="primary">
+    <ion-title>{{book?.title}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+
+  <ion-item>
+    <ion-icon name="md-bookmark" item-start></ion-icon>
+    <ion-input type="text" placeholder="Título" name="title" [(ngModel)]="book.title" required>
+    </ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-icon name="at" item-start></ion-icon>
+    <ion-input type="text" placeholder="Edição" name="edition" [(ngModel)]="book.edition" required minlenght="1">
+    </ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-icon name="md-bookmark" item-start></ion-icon>
+    <ion-input type="text" placeholder="Ano de lançamento(1ª edição)" name="year" [(ngModel)]="book.year" required minlenght="4">
+    </ion-input>
+  </ion-item>
+
+  <br>
+  <button ion-button block clear (click)="saveBook(book)">Editar</button>
+
+  <br>
+  <button ion-button block clear color="danger" (click)="removeBook(book)">Excluir</button>
 
 </ion-content>

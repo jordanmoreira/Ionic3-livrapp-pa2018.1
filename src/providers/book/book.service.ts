@@ -1,38 +1,53 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase } from 'angularfire2/database';
+
 import { Observable } from 'rxjs';
 
+import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
 import { BaseService } from '../base.service';
+import { FirebaseApp } from 'angularfire2';
 
 import { Book } from '../../models/book.model';
 
 import * as firebase from 'firebase/app';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @Injectable()
 export class BookService extends BaseService {
 
-  private booksRef = this.db.list<Book>('books');
+  private booksListRef = this.db.list<Book>('books');
   books: Observable<Book[]>;
+  currentBook: AngularFireObject<Book>;
 
   constructor(
+    public afAuth: AngularFireAuth,
     public db: AngularFireDatabase,
-    public http: HttpClient
+    public firebaseApp: FirebaseApp,
+    public http: HttpModule
 
   ) {
     super();
     this.books = this.db.list<Book>('/books').valueChanges();
   }
 
-  getBooks() {
-    return this.booksRef;
-  }
-  create(book: Book) {
-    return this.booksRef.push(book);
+  getBooksList() {
+    return this.booksListRef;
   }
 
-  // create(book: Book): Promise<void> {
-  //   return this.db.object(`/books/`)
-  //     .set(book);
-  // }
+  addBook(book: Book) {
+    return this.booksListRef.push(book);
+  }
+
+  editBook(book: Book) {
+    return this.booksListRef.update(book.key, book);
+  }
+
+  removeBook(book: Book) {
+    return this.booksListRef.remove(book.key);
+  }
+
+  get(bookId: string): AngularFireObject<Book> {
+    return this.db.object<Book>(`/books/${bookId}`);
+  }
+  
 }

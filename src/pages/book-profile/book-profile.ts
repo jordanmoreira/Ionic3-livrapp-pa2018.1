@@ -1,5 +1,10 @@
+import { HttpModule } from '@angular/http';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+
+import { BookService } from '../../providers/book/book.service';
+
+import { Book } from '../../models/book.model';
 
 @IonicPage()
 @Component({
@@ -8,14 +13,35 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class BookProfilePage {
 
+  book: Book;
+  canEdit: boolean = false;
+  uploadProgress: number;
+  private filePhoto: File;
+
   constructor(
-    public navCtrl: NavController, 
-    public navParams: NavParams
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public bookService: BookService,
+    public http: HttpModule
   ) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad BookProfilePage');
+  ionViewWillLoad() {
+    this.book = this.navParams.get('book');
+  }
+
+  saveBook(book: Book) {
+    this.bookService.editBook(book).then(() => {
+      console.log("sucesso");
+      this.navCtrl.setRoot("HomePage");
+    });
+  }
+
+  removeBook(book: Book) {
+    this.bookService.removeBook(book).then(() => {
+      console.log("sucesso");
+      this.navCtrl.setRoot("HomePage");
+    });
   }
 
 }

@@ -44,12 +44,18 @@
       </button>
     </ion-list>
 
-    <ion-list *ngSwitchCase="'books'" no-lines>
+    <!-- <ion-list *ngSwitchCase="'books'" no-lines>
       <button ion-item *ngFor="let book of books | async" (click)="onBookProfile()">
         {{ book.title }}
       </button>
-    </ion-list>
+    </ion-list> -->
 
+    <ion-list *ngSwitchCase="'books'" no-lines>
+      <button ion-item *ngFor="let book of books | async" detail-push navPush="BookProfilePage" 
+        [navParams] = "{book: book}">
+        {{ book.title }}
+      </button>
+    </ion-list>
   </div>
 
 </ion-content>

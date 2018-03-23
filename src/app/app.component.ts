@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
+import { HttpModule } from '@angular/http';
+import { Component, ViewChild } from '@angular/core';
+import { Platform, NavController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -25,7 +26,8 @@ export class MyApp {
     platform: Platform,
     statusBar: StatusBar,
     splashScreen: SplashScreen,
-    userService: UserService
+    userService: UserService,
+    http: HttpModule
 
   ) {
 

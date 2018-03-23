@@ -1,6 +1,6 @@
 <ion-header>
 
-  <custom-logged-header [title]="'User Profile'"></custom-logged-header>
+  <custom-logged-header [title]="'Perfil de usuário'"></custom-logged-header>
 
 </ion-header>
 
@@ -14,25 +14,13 @@
 
     <ion-item>
       <ion-icon name="person" item-start></ion-icon>
-      <ion-input
-        type="text"
-        placeholder="Name"
-        name="name"
-        [(ngModel)]="currentUser.name"
-        required
-        minlenght="3">
+      <ion-input type="text" placeholder="Name" name="name" [(ngModel)]="currentUser.name" required minlenght="3">
       </ion-input>
     </ion-item>
 
     <ion-item>
       <ion-icon name="at" item-start></ion-icon>
-      <ion-input
-        type="text"
-        placeholder="Username"
-        name="username"
-        [(ngModel)]="currentUser.username"
-        required
-        minlenght="3">
+      <ion-input type="text" placeholder="Username" name="username" [(ngModel)]="currentUser.username" required minlenght="3">
       </ion-input>
     </ion-item>
 

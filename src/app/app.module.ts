@@ -20,7 +20,6 @@ import { UserMenuComponent } from '../components/user-menu/user-menu.component';
 import { AboutPage } from '../pages/about/about';
 import { BookAddPage } from '../pages/book-add/book-add';
 import { BookPage } from '../pages/book/book';
-import { BookProfilePage } from '../pages/book-profile/book-profile';
 import { ChatPage } from '../pages/chat/chat';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
@@ -56,7 +55,6 @@ const firebaseAppConfig: FirebaseAppConfig = {
     AboutPage,
     BookAddPage,
     BookPage,
-    BookProfilePage,
     ContactPage,
     HomePage,
     SigninPage,
@@ -82,7 +80,6 @@ const firebaseAppConfig: FirebaseAppConfig = {
     AboutPage,
     BookAddPage,
     BookPage,
-    BookProfilePage,
     ContactPage,
     ChatPage,
     HomePage,

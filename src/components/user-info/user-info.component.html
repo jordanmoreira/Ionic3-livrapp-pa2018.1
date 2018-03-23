@@ -5,3 +5,11 @@
   <h2 text-center>{{ user.name }}</h2>
   <p text-center>@{{ user.username }}</p>
 </div>
+
+<div *ngIf="book">
+  <ion-avatar [ngClass]="{'custom-background': isMenu}">
+    <img class="round" [src]="book.photo || 'assets/imgs/sly-moves.jpg'">
+  </ion-avatar>
+  <h2 text-center>{{ book.title }}</h2>
+  <p text-center>@{{ book.year }}</p>
+</div>

@@ -13,46 +13,33 @@
     <ion-icon class="md-bookmarks" name="book-add" color="black"></ion-icon>
   </h1>
 
-  <!-- <form [formGroup]="bookForm" (ngSubmit)="onSubmit(); $event.preventDefault()"> -->
+  <ion-item>
+    <ion-icon name="md-bookmark" item-left></ion-icon>
+    <ion-input [(ngModel)]="book.title" type="text" placeholder="Título"></ion-input>
+  </ion-item>
 
-    <!-- <ion-item>
-      <ion-icon name="md-bookmark" item-left></ion-icon>
-      <ion-input type="text" placeholder="Título" formControlName="title"></ion-input>
-    </ion-item>
+  <ion-item>
+    <ion-icon name="md-bookmark" item-left></ion-icon>
+    <ion-input [(ngModel)]="book.edition" type="text" placeholder="Edição"></ion-input>
+  </ion-item>
 
-    <ion-item>
-      <ion-icon name="md-bookmark" item-left></ion-icon>
-      <ion-input type="text" placeholder="Edição" formControlName="edition"></ion-input>
-    </ion-item>
+  <ion-item>
+    <ion-icon name="md-bookmark" item-left></ion-icon>
+    <ion-input [(ngModel)]="book.price" type="number" placeholder="Preço"></ion-input>
+  </ion-item>
 
-    <ion-item>
-      <ion-icon name="md-bookmark" item-left></ion-icon>
-      <ion-input type="number" placeholder="Ano de lançamento(1ª edição)" formControlName="year"></ion-input>
-    </ion-item>
+  <ion-item>
+    <ion-icon name="md-bookmark" item-left></ion-icon>
+    <ion-input [(ngModel)]="book.year" type="number" placeholder="Ano de lançamento(1ª edição)"></ion-input>
+  </ion-item>
 
-    <ion-item>
-      <ion-icon name="image" item-start></ion-icon>
-      <input type="file" accept="image/*" (change)="onPhoto($event)">
-    </ion-item> -->
+  <ion-item>
+    <ion-icon name="md-bookmark" item-left></ion-icon>
+    <ion-input [(ngModel)]="book.obs" type="text" placeholder="Observações"></ion-input>
+  </ion-item>
+  {{book | json}}
 
-    <ion-item>
-      <ion-icon name="md-bookmark" item-left></ion-icon>
-      <ion-input [(ngModel)]="book.title" type="text" placeholder="Título"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-icon name="md-bookmark" item-left></ion-icon>
-      <ion-input [(ngModel)]="book.edition" type="text" placeholder="Edição"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-icon name="md-bookmark" item-left></ion-icon>
-      <ion-input [(ngModel)]="book.year" type="number" placeholder="Ano de lançamento(1ª edição)"></ion-input>
-    </ion-item>
-    {{book | json}}
-
-    <br>
-    <button ion-button block clear (click)="addBook(book)">Adicionar</button>
-    <!-- <button ion-button full type="submit" [disabled]="bookForm.invalid">Adicionar</button> -->
+  <br>
+  <button ion-button block clear (click)="addBook(book)">Adicionar</button>
 
 </ion-content>

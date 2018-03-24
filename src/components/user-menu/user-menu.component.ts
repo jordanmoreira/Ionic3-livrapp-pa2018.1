@@ -19,11 +19,13 @@ import { Book } from '../../models/book.model';
 export class UserMenuComponent extends BaseComponent {
   @Input('user') currentUser: User;
   
-  book: Book = {
-    title: '',
-    edition: '',
-    year: undefined
-  };
+  // book: Book = {
+  //   title: '',
+  //   edition: '',
+  //   obs: '',
+  //   price: undefined,
+  //   year: undefined
+  // };
 
   constructor(
     public alertCtrl: AlertController,

@@ -15,5 +15,7 @@ export interface Book {
     key?: string,
     title: string,
     edition: string,
+    obs?: string,
+    price: number,
     year: number
 }

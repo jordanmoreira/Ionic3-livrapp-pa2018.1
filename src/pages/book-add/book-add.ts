@@ -14,11 +14,11 @@ import { Book } from '../../models/book.model';
   templateUrl: 'book-add.html',
 })
 export class BookAddPage {
-  //bookForm: FormGroup;
-
   book: Book = {
     title: '',
     edition: '',
+    obs: '',
+    price: undefined,
     year: undefined
   };
 
@@ -29,31 +29,13 @@ export class BookAddPage {
     public bookService: BookService
   ) {
 
-    // this.bookForm = this.formBuilder.group({
-    //   title: ['', [Validators.required]],
-    //   edition: ['', [Validators.required, Validators.minLength(1)]],
-    //   year: ['', [Validators.required, Validators.minLength(4)]],
-    // });
-
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad BookAddPage');
   }
 
   addBook(book: Book) {
     this.bookService.addBook(book).then(ref => {
       console.log(ref.key)
-      this.navCtrl.setRoot('HomePage', {key: ref.key});
+      this.navCtrl.setRoot(HomePage, {key: ref.key});
     });
   }
 
-  // onSubmit(): void {
-  //   let formBook = this.bookForm.value;
-  //   this.bookService.create(formBook)
-  //     .then(() => {
-  //       console.log("Livro cadastrado com sucesso!");
-  //       this.navCtrl.setRoot(HomePage);
-  //     });
-  // }
 }

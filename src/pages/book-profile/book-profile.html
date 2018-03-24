@@ -23,9 +23,19 @@
   </ion-item>
 
   <ion-item>
+    <ion-icon name="md-bookmark" item-left></ion-icon>
+    <ion-input [(ngModel)]="book.price" type="number" placeholder="Preço"></ion-input>
+  </ion-item>
+
+  <ion-item>
     <ion-icon name="md-bookmark" item-start></ion-icon>
     <ion-input type="text" placeholder="Ano de lançamento(1ª edição)" name="year" [(ngModel)]="book.year" required minlenght="4">
     </ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-icon name="md-bookmark" item-left></ion-icon>
+    <ion-input [(ngModel)]="book.obs" type="text" placeholder="Observações"></ion-input>
   </ion-item>
 
   <br>

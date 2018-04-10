@@ -6,6 +6,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../providers/auth/auth.service';
 import { HomePage } from '../home/home';
 import { SignupPage } from '../signup/signup';
+import { SchoolAddPage } from '../school-add/school-add';
 
 
 @IonicPage()
@@ -78,6 +79,10 @@ export class SigninPage {
       }).catch;(error => {
         console.log('Não autorizado; ', error);
       });
+  }
+
+  onSchoolAddPage(): void {
+    this.navCtrl.push(SchoolAddPage);
   }
 
   onLogout(): void {

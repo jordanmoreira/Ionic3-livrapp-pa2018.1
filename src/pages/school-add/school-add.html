@@ -1,0 +1,41 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Cadastre sua escola:</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <h1 text-center>
+    <ion-icon class="md-bookmarks" name="school-add" color="black"></ion-icon>
+  </h1>
+
+  <ion-item>
+    <ion-icon name="md-school" item-left></ion-icon>
+    <ion-input [(ngModel)]="school.name" type="text" placeholder="Nome"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-icon name="md-school" item-left></ion-icon>
+    <ion-input [(ngModel)]="school.address" type="text" placeholder="Endereço"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-icon name="md-school" item-left></ion-icon>
+    <ion-input [(ngModel)]="school.cnpj" type="text" placeholder="CNPJ"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-icon name="md-school" item-left></ion-icon>
+    <ion-input [(ngModel)]="school.contact" type="string" placeholder="Contato"></ion-input>
+  </ion-item>
+  
+  {{school | json}}
+
+  <br>
+  <button ion-button block clear (click)="addSchool(school)">Cadastrar</button>
+
+</ion-content>

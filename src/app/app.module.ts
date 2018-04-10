@@ -26,6 +26,7 @@ import { HomePage } from '../pages/home/home';
 import { SigninPage } from '../pages/signin/signin';
 import { SignupPage } from './../pages/signup/signup';
 import { UserProfilePage } from '../pages/user-profile/user-profile';
+import { SchoolAddPage } from '../pages/school-add/school-add';
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { CapitalizePipe } from '../pipes/capitalize.pipe';
@@ -35,6 +36,7 @@ import { BookService } from '../providers/book/book.service';
 import { ChatService } from '../providers/chat/chat.service';
 import { MessageService } from '../providers/message/message.service';
 import { UserService } from '../providers/user/user.service';
+import { SchoolService } from '../providers/school/school.service';
 
 
 const firebaseAppConfig: FirebaseAppConfig = {
@@ -60,6 +62,7 @@ const firebaseAppConfig: FirebaseAppConfig = {
     SigninPage,
     SignupPage,
     BookAddPage,
+    SchoolAddPage,
     TabsPage,
     UserMenuComponent,
     UserInfoComponent,
@@ -86,6 +89,7 @@ const firebaseAppConfig: FirebaseAppConfig = {
     SigninPage,
     SignupPage,
     UserProfilePage,
+    SchoolAddPage,
     TabsPage
   ],
   providers: [
@@ -93,6 +97,7 @@ const firebaseAppConfig: FirebaseAppConfig = {
     BookService,
     ChatService,
     MessageService,
+    SchoolService,
     StatusBar,
     AngularFireAuthModule,
     SplashScreen,

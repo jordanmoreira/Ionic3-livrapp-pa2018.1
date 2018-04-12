@@ -1,0 +1,42 @@
+<ion-header>
+
+  <!-- <header [title]="'Perfil do livro'"></header> -->
+  <ion-navbar color="primary">
+    <ion-title>{{school?.name}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-item>
+    <ion-icon name="md-school" item-start></ion-icon>
+    <ion-input type="text" placeholder="Nome" name="name" [(ngModel)]="school.name" required>
+    </ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-icon name="md-school" item-start></ion-icon>
+    <ion-input type="text" placeholder="Endereço" name="edition" [(ngModel)]="school.address" required>
+    </ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-icon name="md-school" item-left></ion-icon>
+    <ion-input [(ngModel)]="school.cnpj" type="text" placeholder="CNPJ"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-icon name="md-school" item-start></ion-icon>
+    <ion-input type="text" placeholder="Contato" name="contact" [(ngModel)]="school.contact" require>
+    </ion-input>
+  </ion-item>
+
+  <br>
+  <button ion-button block clear (click)="saveSchool(school)">Editar</button>
+
+  <br>
+  <button ion-button block clear color="danger" (click)="removeSchool(school)">Excluir</button>
+
+</ion-content>

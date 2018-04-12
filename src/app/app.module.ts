@@ -30,6 +30,7 @@ import { SchoolAddPage } from '../pages/school-add/school-add';
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { CapitalizePipe } from '../pipes/capitalize.pipe';
+import { SearchPipe } from '../pipes/search/search';
 
 import { AuthService } from '../providers/auth/auth.service';
 import { BookService } from '../providers/book/book.service';
@@ -51,6 +52,7 @@ const firebaseAppConfig: FirebaseAppConfig = {
 @NgModule({
   declarations: [
     CapitalizePipe,
+    SearchPipe,
     ChatPage,
     CustomLoggedHeaderComponent,
     MyApp,

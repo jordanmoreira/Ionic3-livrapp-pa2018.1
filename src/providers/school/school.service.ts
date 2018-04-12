@@ -13,7 +13,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 @Injectable()
 export class SchoolService extends BaseService {
 
-  private schoolListRef = this.db.list<School>('books');
+  private schoolListRef = this.db.list<School>('schools');
   schools: Observable<School[]>;
   currentSchool: AngularFireObject<School>;
 

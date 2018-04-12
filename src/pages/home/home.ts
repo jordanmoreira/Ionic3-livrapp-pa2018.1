@@ -6,11 +6,13 @@ import { Observable } from 'rxjs';
 
 import { Book } from '../../models/book.model';
 import { Chat } from '../../models/chat.model';
+import { School } from '../../models/school.model';
 import { User } from '../../models/user.model';
 
 import { AuthService } from '../../providers/auth/auth.service';
 import { BookService } from '../../providers/book/book.service';
 import { ChatService } from '../../providers/chat/chat.service';
+import { SchoolService } from '../../providers/school/school.service';
 import { UserService } from '../../providers/user/user.service';
 
 import { ChatPage } from '../chat/chat';
@@ -18,16 +20,22 @@ import { SignupPage } from './../signup/signup';
 
 import * as firebase from 'firebase/app';
 import { BookProfilePage } from '../book-profile/book-profile';
+import { SchoolProfilePage } from '../school-profile/school-profile';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
+  descending: boolean = false;
+  order: number;
+  column: string = 'name';
+
 
   chats: Observable<Chat[]>;
   users: Observable<User[]>;
   books: Observable<Book[]>;
+  schools: Observable<School[]>;
   view: string = 'chats';
 
   constructor(
@@ -37,12 +45,23 @@ export class HomePage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public menuCtrl: MenuController,
+    public schoolService: SchoolService,
     public userService: UserService,
     public http:HttpModule
   ) {
 
     this.books = this.bookService
       .getBooksList()
+      .snapshotChanges()
+      .map(changes => {
+          return changes.map(c => ({
+            key: c.payload.key, 
+            ...c.payload.val()
+          }));
+        });
+
+        this.schools = this.schoolService
+      .getSchoolList()
       .snapshotChanges()
       .map(changes => {
           return changes.map(c => ({
@@ -121,6 +140,11 @@ export class HomePage {
   onBookProfile(): void {
     console.log('Editar livro');
     this.navCtrl.push(BookProfilePage);
+  }
+
+  onSchoolProfile(): void {
+    console.log('Editar escola');
+    this.navCtrl.push(SchoolProfilePage);
   }
 
 }

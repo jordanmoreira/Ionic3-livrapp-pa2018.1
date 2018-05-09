@@ -99,39 +99,38 @@ export class ChatPage {
 
   }
 
-  // sendMessage(newMessage: string): void {
+  sendMessage(newMessage: string): void {
 
-  //   if (newMessage) {
+    if (newMessage) {
 
-  //     let currentTimestamp: Object = firebase.database.ServerValue.TIMESTAMP;
+      let currentTimestamp: Object = firebase.database.ServerValue.TIMESTAMP;
 
-  //     this.messageService.create(
-  //       new Message(
-  //         this.sender.$key,
-  //         newMessage,
-  //         currentTimestamp
-  //       ),
-  //       this.messages
-  //     ).then(() => {
+      this.messageService.create(
+        new Message(
+          this.sender.$key,
+          newMessage,
+          currentTimestamp
+        ),
+        this.messages
+      ).then(() => {
 
-  //       this.chat1
-  //         .update({
-  //           lastMessage: newMessage,
-  //           timestamp: currentTimestamp
-  //         });
+        this.chat1
+          .update({
+            lastMessage: newMessage,
+            timestamp: currentTimestamp
+          });
 
-  //       this.chat2
-  //         .update({
-  //           lastMessage: newMessage,
-  //           timestamp: currentTimestamp
-  //         });
+        this.chat2
+          .update({
+            lastMessage: newMessage,
+            timestamp: currentTimestamp
+          });
 
+      });
 
-  //     });
-
-  //   }
-
-  // }
+    }
+    
+  }
 
   private scrollToBottom(duration?: number): void {
     setTimeout(() => {
@@ -140,6 +139,5 @@ export class ChatPage {
       }
     }, 50);
   }
-
 
 }

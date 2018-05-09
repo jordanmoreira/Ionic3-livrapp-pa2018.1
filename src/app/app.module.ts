@@ -14,6 +14,7 @@ import { AngularFireDatabase, AngularFireDatabaseModule } from "angularfire2/dat
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { CustomLoggedHeaderComponent } from '../components/custom-logged-header/custom-logged-header.component';
+import { MessageBoxComponent } from '../components/message-box/message-box.component';
 import { UserInfoComponent } from '../components/user-info/user-info.component';
 import { UserMenuComponent } from '../components/user-menu/user-menu.component';
 
@@ -66,6 +67,7 @@ const firebaseAppConfig: FirebaseAppConfig = {
     BookAddPage,
     SchoolAddPage,
     TabsPage,
+    MessageBoxComponent,
     UserMenuComponent,
     UserInfoComponent,
     UserProfilePage

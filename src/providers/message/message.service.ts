@@ -22,9 +22,9 @@ export class MessageService extends BaseService {
     super();
   }
 
-  // create(message: Message, listMessages: AngularFireList<Message>): Promise<void> {
-  //   return Promise.resolve(listMessages.push(message));
-  // }
+  create(message: Message, listMessages: AngularFireList<Message>): Promise<any> {
+    return Promise.resolve(listMessages.push(message));
+  }
 
   getMessages(userId1: string, userId2: string): AngularFireList<Message> {    
     console.log(userId1, userId2);

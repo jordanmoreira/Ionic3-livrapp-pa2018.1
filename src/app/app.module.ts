@@ -28,6 +28,7 @@ import { SigninPage } from '../pages/signin/signin';
 import { SignupPage } from './../pages/signup/signup';
 import { UserProfilePage } from '../pages/user-profile/user-profile';
 import { SchoolAddPage } from '../pages/school-add/school-add';
+import { SchoolHomePage } from '../pages/school-home/school-home';
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { CapitalizePipe } from '../pipes/capitalize.pipe';
@@ -66,6 +67,7 @@ const firebaseAppConfig: FirebaseAppConfig = {
     SignupPage,
     BookAddPage,
     SchoolAddPage,
+    SchoolHomePage,
     TabsPage,
     MessageBoxComponent,
     UserMenuComponent,
@@ -94,6 +96,7 @@ const firebaseAppConfig: FirebaseAppConfig = {
     SignupPage,
     UserProfilePage,
     SchoolAddPage,
+    SchoolHomePage,
     TabsPage
   ],
   providers: [

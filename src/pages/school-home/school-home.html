@@ -1,0 +1,42 @@
+<ion-header>
+  <custom-logged-header ></custom-logged-header>
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="view">
+      <ion-segment-button value="elementarySchool">
+        Ensino Fundamental
+      </ion-segment-button>
+      
+      <ion-segment-button value="highSchool">
+        Ensino Médio
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content padding>
+
+  <!-- <div [ngSwitch]="view">
+
+    <ion-list *ngSwitchCase="'users'" no-lines>
+      <button ion-item *ngFor="let user of users | async" (click)="onChatCreate(user)">
+        {{ user.name }}
+      </button>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'books'" no-lines>
+      <ion-searchbar [(ngModel)]="terms"></ion-searchbar>
+
+      <button ion-item *ngFor="let book of books | async | search: terms" detail-push navPush="BookProfilePage" [navParams]="{book: book}">
+        {{ book.title }}
+      </button>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'schools'" no-lines>
+      <button ion-item *ngFor="let school of schools | async" detail-push navPush="SchoolProfilePage" [navParams]="{school: school}">
+        {{ school.name }}
+      </button>
+    </ion-list>
+  </div> -->
+
+</ion-content>

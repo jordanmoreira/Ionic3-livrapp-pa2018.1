@@ -21,6 +21,7 @@ import { SignupPage } from './../signup/signup';
 import * as firebase from 'firebase/app';
 import { BookProfilePage } from '../book-profile/book-profile';
 import { SchoolProfilePage } from '../school-profile/school-profile';
+import { SchoolHomePage } from '../school-home/school-home';
 
 @Component({
   selector: 'page-home',
@@ -142,9 +143,9 @@ export class HomePage {
     this.navCtrl.push(BookProfilePage);
   }
 
-  onSchoolProfile(): void {
-    console.log('Editar escola');
-    this.navCtrl.push(SchoolProfilePage);
+  onSchoolClick(): void {
+    console.log('School Home');
+    this.navCtrl.push(SchoolHomePage);
   }
 
 }

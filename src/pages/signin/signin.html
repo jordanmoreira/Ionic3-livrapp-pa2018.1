@@ -3,13 +3,13 @@
   <ion-navbar>
     <ion-title>Livrapp</ion-title>
   </ion-navbar>
-
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 </ion-header>
 
 <ion-content padding>
 
   <h1 text-center>
-    <ion-icon class="auth-icon" name="ios-bookmarks" color="black"></ion-icon>
+    <i class="fas fa-book fa-8x"></i>
   </h1>
 
   <form [formGroup]="signinForm" (ngSubmit)="onSubmit(); $event.preventDefault()">

@@ -3,41 +3,35 @@
   <ion-navbar>
     <ion-title>Novo livro</ion-title>
   </ion-navbar>
-
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+    crossorigin="anonymous">
 </ion-header>
 
-
 <ion-content padding>
-
-  <h1 text-center>
-    <ion-icon class="md-bookmarks" name="book-add" color="black"></ion-icon>
-  </h1>
-
   <ion-item>
-    <ion-icon name="md-bookmark" item-left></ion-icon>
+    <ion-icon name="ios-bookmark" item-left></ion-icon>
     <ion-input [(ngModel)]="book.title" type="text" placeholder="Título"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-icon name="md-bookmark" item-left></ion-icon>
+    <ion-icon name="ios-bookmark" item-left></ion-icon>
     <ion-input [(ngModel)]="book.edition" type="text" placeholder="Edição"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-icon name="md-bookmark" item-left></ion-icon>
+    <ion-icon name="ios-bookmark" item-left></ion-icon>
     <ion-input [(ngModel)]="book.price" type="number" placeholder="Preço"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-icon name="md-bookmark" item-left></ion-icon>
+    <ion-icon name="ios-bookmark" item-left></ion-icon>
     <ion-input [(ngModel)]="book.year" type="number" placeholder="Ano de lançamento(1ª edição)"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-icon name="md-bookmark" item-left></ion-icon>
+    <ion-icon name="ios-bookmark" item-left></ion-icon>
     <ion-input [(ngModel)]="book.obs" type="text" placeholder="Observações"></ion-input>
   </ion-item>
-  {{book | json}}
 
   <br>
   <button ion-button block clear (click)="addBook(book)">Adicionar</button>

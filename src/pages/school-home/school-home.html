@@ -1,11 +1,11 @@
 <ion-header>
-  <custom-logged-header ></custom-logged-header>
+  <custom-logged-header></custom-logged-header>
   <ion-toolbar>
     <ion-segment [(ngModel)]="view">
       <ion-segment-button value="elementarySchool">
         Ensino Fundamental
       </ion-segment-button>
-      
+
       <ion-segment-button value="highSchool">
         Ensino Médio
       </ion-segment-button>
@@ -16,27 +16,206 @@
 
 <ion-content padding>
 
-  <!-- <div [ngSwitch]="view">
+  <div [ngSwitch]="view">
+    <ion-segment *ngSwitchCase="'elementarySchool'" no-lines>
+      <ion-segment [(ngModel)]="view">
+        <ion-segment-button value="1year">
+          1º
+        </ion-segment-button>
 
-    <ion-list *ngSwitchCase="'users'" no-lines>
-      <button ion-item *ngFor="let user of users | async" (click)="onChatCreate(user)">
-        {{ user.name }}
-      </button>
+        <ion-segment-button value="2year">
+          2º
+        </ion-segment-button>
+
+        <ion-segment-button value="3year">
+          3º
+        </ion-segment-button>
+
+        <ion-segment-button value="4year">
+          4º
+        </ion-segment-button>
+
+        <ion-segment-button value="5year">
+          5º
+        </ion-segment-button>
+
+        <ion-segment-button value="6year">
+          6º
+        </ion-segment-button>
+
+        <ion-segment-button value="7year">
+          7º
+        </ion-segment-button>
+
+        <ion-segment-button value="8year">
+          8º
+        </ion-segment-button>
+
+        <ion-segment-button value="9year">
+          9º
+        </ion-segment-button>
+      </ion-segment>
+    </ion-segment>
+
+    <ion-segment *ngSwitchCase="'highSchool'" no-lines>
+      <ion-segment [(ngModel)]="view">
+        <ion-segment-button value="1HighYear">
+          1º ano
+        </ion-segment-button>
+
+        <ion-segment-button value="2HighYear">
+          2º ano
+        </ion-segment-button>
+
+        <ion-segment-button value="3HighYear">
+          3º ano
+        </ion-segment-button>
+      </ion-segment>
+    </ion-segment>
+
+    <ion-list *ngSwitchCase="'1year'" no-lines>
+      <ion-item>1º ano fundamental - livro 1</ion-item>
+      <ion-item>1º ano fundamental - Livro 2</ion-item>
+      <ion-item>1º ano fundamental - Livro 3</ion-item>
+      <ion-item>1º ano fundamental - Livro 4</ion-item>
+      <ion-item>1º ano fundamental - Livro 5</ion-item>
+      <ion-item>1º ano fundamental - Livro 6</ion-item>
+      <ion-item>1º ano fundamental - Livro 7</ion-item>
+      <ion-item>1º ano fundamental - Livro 8</ion-item>
+      <ion-item>1º ano fundamental - Livro 9</ion-item>
     </ion-list>
 
-    <ion-list *ngSwitchCase="'books'" no-lines>
-      <ion-searchbar [(ngModel)]="terms"></ion-searchbar>
-
-      <button ion-item *ngFor="let book of books | async | search: terms" detail-push navPush="BookProfilePage" [navParams]="{book: book}">
-        {{ book.title }}
-      </button>
+    <ion-list *ngSwitchCase="'2year'" no-lines>
+      <ion-item>2º ano fundamental - Livro 1</ion-item>
+      <ion-item>2º ano fundamental - Livro 2</ion-item>
+      <ion-item>2º ano fundamental - Livro 3</ion-item>
+      <ion-item>2º ano fundamental - Livro 4</ion-item>
+      <ion-item>2º ano fundamental - Livro 5</ion-item>
+      <ion-item>2º ano fundamental - Livro 6</ion-item>
+      <ion-item>2º ano fundamental - Livro 7</ion-item>
+      <ion-item>2º ano fundamental - Livro 8</ion-item>
+      <ion-item>2º ano fundamental - Livro 9</ion-item>
     </ion-list>
 
-    <ion-list *ngSwitchCase="'schools'" no-lines>
-      <button ion-item *ngFor="let school of schools | async" detail-push navPush="SchoolProfilePage" [navParams]="{school: school}">
-        {{ school.name }}
-      </button>
+    <ion-list *ngSwitchCase="'3year'" no-lines>
+      <ion-item>3º ano fundamental - Livro 1</ion-item>
+      <ion-item>3º ano fundamental - Livro 2</ion-item>
+      <ion-item>3º ano fundamental - Livro 3</ion-item>
+      <ion-item>3º ano fundamental - Livro 4</ion-item>
+      <ion-item>3º ano fundamental - Livro 5</ion-item>
+      <ion-item>3º ano fundamental - Livro 6</ion-item>
+      <ion-item>3º ano fundamental - Livro 7</ion-item>
+      <ion-item>3º ano fundamental - Livro 8</ion-item>
+      <ion-item>3º ano fundamental - Livro 9</ion-item>
     </ion-list>
-  </div> -->
+
+    <ion-list *ngSwitchCase="'4year'" no-lines>
+      <ion-item>4º ano fundamental - Livro 1</ion-item>
+      <ion-item>4º ano fundamental - Livro 2</ion-item>
+      <ion-item>4º ano fundamental - Livro 3</ion-item>
+      <ion-item>4º ano fundamental - Livro 4</ion-item>
+      <ion-item>4º ano fundamental - Livro 5</ion-item>
+      <ion-item>4º ano fundamental - Livro 6</ion-item>
+      <ion-item>4º ano fundamental - Livro 7</ion-item>
+      <ion-item>4º ano fundamental - Livro 8</ion-item>
+      <ion-item>4º ano fundamental - Livro 9</ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'5year'" no-lines>
+      <ion-item>5º ano fundamental - Livro 1</ion-item>
+      <ion-item>5º ano fundamental - Livro 2</ion-item>
+      <ion-item>5º ano fundamental - Livro 3</ion-item>
+      <ion-item>5º ano fundamental - Livro 4</ion-item>
+      <ion-item>5º ano fundamental - Livro 5</ion-item>
+      <ion-item>5º ano fundamental - Livro 6</ion-item>
+      <ion-item>5º ano fundamental - Livro 7</ion-item>
+      <ion-item>5º ano fundamental - Livro 8</ion-item>
+      <ion-item>5º ano fundamental - Livro 9</ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'6year'" no-lines>
+      <ion-item>6º ano fundamental - Livro 1</ion-item>
+      <ion-item>6º ano fundamental - Livro 2</ion-item>
+      <ion-item>6º ano fundamental - Livro 3</ion-item>
+      <ion-item>6º ano fundamental - Livro 4</ion-item>
+      <ion-item>6º ano fundamental - Livro 5</ion-item>
+      <ion-item>6º ano fundamental - Livro 6</ion-item>
+      <ion-item>6º ano fundamental - Livro 7</ion-item>
+      <ion-item>6º ano fundamental - Livro 8</ion-item>
+      <ion-item>6º ano fundamental - Livro 9</ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'7year'" no-lines>
+      <ion-item>7º ano fundamental - Livro 1</ion-item>
+      <ion-item>7º ano fundamental - Livro 2</ion-item>
+      <ion-item>7º ano fundamental - Livro 3</ion-item>
+      <ion-item>7º ano fundamental - Livro 4</ion-item>
+      <ion-item>7º ano fundamental - Livro 5</ion-item>
+      <ion-item>7º ano fundamental - Livro 6</ion-item>
+      <ion-item>7º ano fundamental - Livro 7</ion-item>
+      <ion-item>7º ano fundamental - Livro 8</ion-item>
+      <ion-item>7º ano fundamental - Livro 9</ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'8year'" no-lines>
+      <ion-item>8º ano fundamental - Livro 1</ion-item>
+      <ion-item>8º ano fundamental - Livro 2</ion-item>
+      <ion-item>8º ano fundamental - Livro 3</ion-item>
+      <ion-item>8º ano fundamental - Livro 4</ion-item>
+      <ion-item>8º ano fundamental - Livro 5</ion-item>
+      <ion-item>8º ano fundamental - Livro 6</ion-item>
+      <ion-item>8º ano fundamental - Livro 7</ion-item>
+      <ion-item>8º ano fundamental - Livro 8</ion-item>
+      <ion-item>8º ano fundamental - Livro 9</ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'9year'" no-lines>
+      <ion-item>9º ano fundamental - Livro 1</ion-item>
+      <ion-item>9º ano fundamental - Livro 2</ion-item>
+      <ion-item>9º ano fundamental - Livro 3</ion-item>
+      <ion-item>9º ano fundamental - Livro 4</ion-item>
+      <ion-item>9º ano fundamental - Livro 5</ion-item>
+      <ion-item>9º ano fundamental - Livro 6</ion-item>
+      <ion-item>9º ano fundamental - Livro 7</ion-item>
+      <ion-item>9º ano fundamental - Livro 8</ion-item>
+      <ion-item>9º ano fundamental - Livro 9</ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'1HighYear'" no-lines>
+      <ion-item>1º ano médio - Livro 1</ion-item>
+      <ion-item>1º ano médio - Livro 2</ion-item>
+      <ion-item>1º ano médio - Livro 3</ion-item>
+      <ion-item>1º ano médio - Livro 4</ion-item>
+      <ion-item>1º ano médio - Livro 5</ion-item>
+      <ion-item>1º ano médio - Livro 6</ion-item>
+      <ion-item>1º ano médio - Livro 7</ion-item>
+      <ion-item>1º ano médio - Livro 8</ion-item>
+      <ion-item>1º ano médio - Livro 9</ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'2HighYear'" no-lines>
+      <ion-item>2º ano médio - Livro 1</ion-item>
+      <ion-item>2º ano médio - Livro 2</ion-item>
+      <ion-item>2º ano médio - Livro 3</ion-item>
+      <ion-item>2º ano médio - Livro 4</ion-item>
+      <ion-item>2º ano médio - Livro 5</ion-item>
+      <ion-item>2º ano médio - Livro 6</ion-item>
+      <ion-item>2º ano médio - Livro 7</ion-item>
+      <ion-item>2º ano médio - Livro 8</ion-item>
+      <ion-item>2º ano médio - Livro 9</ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'3HighYear'" no-lines>
+      <ion-item>3º ano médio - Livro 1</ion-item>
+      <ion-item>3º ano médio - Livro 2</ion-item>
+      <ion-item>3º ano médio - Livro 3</ion-item>
+      <ion-item>3º ano médio - Livro 4</ion-item>
+      <ion-item>3º ano médio - Livro 5</ion-item>
+      <ion-item>3º ano médio - Livro 6</ion-item>
+      <ion-item>3º ano médio - Livro 7</ion-item>
+      <ion-item>3º ano médio - Livro 8</ion-item>
+      <ion-item>3º ano médio - Livro 9</ion-item>
+    </ion-list>
+  </div>
 
 </ion-content>

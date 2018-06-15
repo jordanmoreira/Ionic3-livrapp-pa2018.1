@@ -15,10 +15,10 @@ import { AngularFireAuth } from 'angularfire2/auth';
 export class BookService extends BaseService {
 
   // Já deixei o "booksListRef" como um AngularFireList de livros.
-  booksListRef: AngularFireList<Book>;     //this.db.list<Book>('books');
+  booksListRef: AngularFireList<Book>; //this.db.list<Book>('books');
   books: Observable<Book[]>;
   currentBook: AngularFireObject<Book>;
-  booksListGeneral: AngularFireList<Book>;
+  allBooks: Observable<Book[]>;
 
   constructor(
     public afAuth: AngularFireAuth,
@@ -31,9 +31,8 @@ export class BookService extends BaseService {
 
     //Chamando o método que incrementa o booksListRef
     this.getBooksList();
-
-
-    // this.books = this.db.list<Book>('/books').valueChanges();
+    this.getBooksListGeneral();
+    //this.allBooks = this.db.list<Book>('/books').valueChanges();
   }
 
 
@@ -51,8 +50,11 @@ export class BookService extends BaseService {
 
   getBooksListGeneral() {
     // let booksList: AngularFireList<Book>;
-    this.booksListGeneral = this.db.list<Book>('books');
-    return this.booksListGeneral;
+    //this.booksListRef = this.db.list<Book>('books');
+    this.booksListRef = this.db.list<Book>(`/books`);
+    this.allBooks = this.booksListRef.valueChanges();
+    
+    return this.booksListRef;
   }
 
   addBook(book: Book) {

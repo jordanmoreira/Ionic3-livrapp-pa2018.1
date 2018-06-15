@@ -9,7 +9,10 @@
         Usuários
       </ion-segment-button>
       <ion-segment-button value="books">
-        Livros
+        Meus livros
+      </ion-segment-button>
+      <ion-segment-button value="allBooks">
+        livros
       </ion-segment-button>
       <ion-segment-button value="schools">
         Escolas
@@ -46,6 +49,15 @@
       <ion-searchbar [(ngModel)]="terms"></ion-searchbar>
       
       <button ion-item *ngFor="let book of books | async | search: terms" detail-push navPush="BookProfilePage" 
+        [navParams] = "{book: book}">
+        {{ book.title }}
+      </button>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'allBooks'" no-lines>
+      <ion-searchbar [(ngModel)]="terms"></ion-searchbar>
+      
+      <button ion-item *ngFor="let book of allBooks | async | search: terms" detail-push navPush="BookProfilePage" 
         [navParams] = "{book: book}">
         {{ book.title }}
       </button>

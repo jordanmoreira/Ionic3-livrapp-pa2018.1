@@ -22,6 +22,7 @@ import * as firebase from 'firebase/app';
 import { BookProfilePage } from '../book-profile/book-profile';
 import { SchoolProfilePage } from '../school-profile/school-profile';
 import { SchoolHomePage } from '../school-home/school-home';
+import { AngularFireList } from 'angularfire2/database';
 
 @Component({
   selector: 'page-home',
@@ -36,6 +37,7 @@ export class HomePage {
   chats: Observable<Chat[]>;
   users: Observable<User[]>;
   books: Observable<Book[]>;
+  allBooks: Observable<Book[]>;
   schools: Observable<School[]>;
   view: string = 'chats';
 
@@ -48,29 +50,29 @@ export class HomePage {
     public menuCtrl: MenuController,
     public schoolService: SchoolService,
     public userService: UserService,
-    public http:HttpModule
+    public http: HttpModule
   ) {
 
-    //this.books = this.bookService
-      // .getBooksList()
-      // .snapshotChanges()
-      // .map(changes => {
-      //     return changes.map(c => ({
-      //       key: c.payload.key, 
-      //       ...c.payload.val()
-      //     }));
-      //   });
+    // this.allBooks = this.bookService
+    //   .getBooksListGeneral()
+    //   .snapshotChanges()
+    //   .map(changes => {
+    //     return changes.map(c => ({
+    //       key: c.payload.key,
+    //       ...c.payload.val()
+    //     }));
+    //   });
 
-        this.schools = this.schoolService
+    this.schools = this.schoolService
       .getSchoolList()
       .snapshotChanges()
       .map(changes => {
-          return changes.map(c => ({
-            key: c.payload.key, 
-            ...c.payload.val()
-          }));
-        });
-    
+        return changes.map(c => ({
+          key: c.payload.key,
+          ...c.payload.val()
+        }));
+      });
+
   }
 
   ionViewCanEnter(): Promise<boolean> {
@@ -82,6 +84,7 @@ export class HomePage {
       .map((chats: Chat[]) => chats.reverse());
     this.users = this.userService.users;
     this.books = this.bookService.books;
+    this.allBooks = this.bookService.allBooks;
 
     this.menuCtrl.enable(true, 'user-menu');
   }

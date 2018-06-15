@@ -1,5 +1,5 @@
 <ion-header>
-  <custom-logged-header ></custom-logged-header>
+  <custom-logged-header></custom-logged-header>
   <ion-toolbar>
     <ion-segment [(ngModel)]="view">
       <ion-segment-button value="chats">
@@ -47,20 +47,18 @@
 
     <ion-list *ngSwitchCase="'books'" no-lines>
       <ion-searchbar [(ngModel)]="terms"></ion-searchbar>
-      
-      <button ion-item *ngFor="let book of books | async | search: terms" detail-push navPush="BookProfilePage" 
-        [navParams] = "{book: book}">
+
+      <button ion-item *ngFor="let book of books | async | search: terms" detail-push navPush="BookProfilePage" [navParams]="{book: book}">
         {{ book.title }}
       </button>
     </ion-list>
 
     <ion-list *ngSwitchCase="'allBooks'" no-lines>
       <ion-searchbar [(ngModel)]="terms"></ion-searchbar>
-      
-      <button ion-item *ngFor="let book of allBooks | async | search: terms" detail-push navPush="BookProfilePage" 
-        [navParams] = "{book: book}">
+
+      <ion-item ion-item *ngFor="let book of allBooks | async | search: terms">
         {{ book.title }}
-      </button>
+      </ion-item>
     </ion-list>
 
     <ion-list *ngSwitchCase="'schools'" no-lines>

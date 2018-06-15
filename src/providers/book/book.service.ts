@@ -10,14 +10,15 @@ import { FirebaseApp } from 'angularfire2';
 
 import * as firebase from 'firebase/app';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { User } from '../../models/user.model';
 
 @Injectable()
 export class BookService extends BaseService {
 
-  // Já deixei o "booksListRef" como um AngularFireList de livros.
-  booksListRef: AngularFireList<Book>; //this.db.list<Book>('books');
+  booksListRef: AngularFireList<Book>;
   books: Observable<Book[]>;
   currentBook: AngularFireObject<Book>;
+  allBooksListRef: AngularFireList<Book>;
   allBooks: Observable<Book[]>;
 
   constructor(
@@ -29,12 +30,10 @@ export class BookService extends BaseService {
   ) {
     super();
 
-    //Chamando o método que incrementa o booksListRef
+    //Chamando o método que incrementa o booksListRef e o allBooksListRef
     this.getBooksList();
     this.getBooksListGeneral();
-    //this.allBooks = this.db.list<Book>('/books').valueChanges();
   }
-
 
   getBooksList() {
     this.afAuth.authState
@@ -49,24 +48,22 @@ export class BookService extends BaseService {
   }
 
   getBooksListGeneral() {
-    // let booksList: AngularFireList<Book>;
-    //this.booksListRef = this.db.list<Book>('books');
-    this.booksListRef = this.db.list<Book>(`/books`);
-    this.allBooks = this.booksListRef.valueChanges();
-    
-    return this.booksListRef;
+    this.allBooksListRef = this.db.list<Book>(`/allbooks`);
+    this.allBooks = this.allBooksListRef.valueChanges();
+
+    return this.allBooksListRef;
   }
 
   addBook(book: Book) {
-    return this.booksListRef.push(book);
+    return this.booksListRef.push(book), this.allBooksListRef.push(book);
   }
 
   editBook(book: Book) {
-    return this.booksListRef.update(book.key, book);
+    return this.booksListRef.update(book.key, book), this.allBooksListRef.update(book.key, book);
   }
 
   removeBook(book: Book) {
-    return this.booksListRef.remove(book.key);
+    return this.booksListRef.remove(book.key), this.allBooksListRef.remove(book.key);
   }
 
   get(bookId: string): AngularFireObject<Book> {

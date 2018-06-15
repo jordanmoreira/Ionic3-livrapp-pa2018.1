@@ -51,15 +51,15 @@ export class HomePage {
     public http:HttpModule
   ) {
 
-    this.books = this.bookService
-      .getBooksList()
-      .snapshotChanges()
-      .map(changes => {
-          return changes.map(c => ({
-            key: c.payload.key, 
-            ...c.payload.val()
-          }));
-        });
+    //this.books = this.bookService
+      // .getBooksList()
+      // .snapshotChanges()
+      // .map(changes => {
+      //     return changes.map(c => ({
+      //       key: c.payload.key, 
+      //       ...c.payload.val()
+      //     }));
+      //   });
 
         this.schools = this.schoolService
       .getSchoolList()
@@ -81,7 +81,7 @@ export class HomePage {
     this.chats = this.chatService.mapListKeys<Chat>(this.chatService.chats)
       .map((chats: Chat[]) => chats.reverse());
     this.users = this.userService.users;
-    //this.booksList = this.bookService.books;
+    this.books = this.bookService.books;
 
     this.menuCtrl.enable(true, 'user-menu');
   }

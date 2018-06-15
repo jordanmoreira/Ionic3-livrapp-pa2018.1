@@ -5,10 +5,10 @@
 //     constructor(
 //         public title: string,
 //         public edition: string,
+//         public price: number,
 //         public year: number,
-//         public photo: string
-//     ) {}
-
+//         public obs?: string
+//     ) { }
 // }
 
 export interface Book {
